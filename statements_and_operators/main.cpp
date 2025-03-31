@@ -5,23 +5,52 @@ using namespace std;
 int main()
 {
 
-    int total{0};
-    int num1{}, num2{}, num3{};
-    const int count{3};
+	int inc_amount{0};
 
-    cout << "Choose 3 integers";
+	cout << "Enter an amount in cents and you will recieve your change:" << endl;
+	cin >> inc_amount;
 
-    cin >> num1 >> num2 >> num3;
+	int dollars{};
+	int quarters{};
+	int dimes{};
+	int nickels{};
+	int pennies{};
 
-    total = num1 + num2 + num3;
+	while (inc_amount > 0)
+	{
+		if (inc_amount >= 100)
+		{
+			dollars += 1;
+			inc_amount -= 100;
+		}
+		else if (inc_amount >= 25)
+		{
+			quarters += 1;
+			inc_amount -= 25;
+		}
+		else if (inc_amount >= 10)
+		{
+			dimes += 1;
+			inc_amount -= 10;
+		}
+		else if (inc_amount >= 5)
+		{
+			nickels += 1;
+			inc_amount -= 5;
+		}
+		else
+		{
+			pennies += 1;
+			inc_amount -= 1;
+		}
+	}
 
-    double average{0.0};
+	cout << "You will get:" << endl;
+	cout << "dollars :" << dollars << endl;
+	cout << "quarters :" << quarters << endl;
+	cout << "dimes :" << dimes << endl;
+	cout << "nickels :" << nickels << endl;
+	cout << "pennies :" << pennies << endl;
 
-    average = static_cast<double>(total) / count;
-
-    cout << "The 3 numbers were " << num1 << "," << num2 << "," << num3 << endl;
-    cout << "The sum of the number is: " << total << endl;
-    cout << "The average is: " << average << endl;
-
-    return 0;
+	return 0;
 }
